@@ -1,4 +1,4 @@
-def label = "slave-${UUID.randomUUID().toString()}"
+def label = "master"
 
 podTemplate(label: label, containers: [
   containerTemplate(name: 'maven', image: 'maven:3.6-alpine', command: 'cat', ttyEnabled: true),
