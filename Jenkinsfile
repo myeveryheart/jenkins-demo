@@ -1,5 +1,4 @@
 podTemplate(containers: [
-  containerTemplate(name: 'maven', image: 'maven:3.6-alpine', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'kubectl', image: 'cnych/kubectl', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'helm', image: 'cnych/helm', command: 'cat', ttyEnabled: true)
@@ -13,14 +12,6 @@ podTemplate(containers: [
     def gitCommit = myRepo.GIT_COMMIT
     def gitBranch = myRepo.GIT_BRANCH
 
-    stage('单元测试') {
-      echo "测试阶段"
-    }
-    stage('代码编译打包') {
-      container('maven') {
-        echo "打码编译打包阶段"
-      }
-    }
     stage('构建 Docker 镜像') {
       container('docker') {
         echo "构建 Docker 镜像阶段"
